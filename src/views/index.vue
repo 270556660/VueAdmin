@@ -2,8 +2,8 @@
     <div id="index">
         <vHeader info="Repositories List"></vHeader>
         <section>
-            <div id="wrapper">
-                <div label="View Your Repositories" class="demo-raised-button view-btn" backgroundColor="black" @click="goToLogin"></div>
+            <div id="wrapper" style="background:#999;">
+                <div label="View Your Repositories" class="demo-raised-button view-btn"  @click="goToLogin">45</div>
             </div>
         </section>
     </div>
@@ -28,9 +28,10 @@ export default {
 }
 
 </script>
-<style lang="css" scoped>
+<style scoped>
 #wrapper{
     height: 100px;
+    color: blue;
 }
 .view-btn{
     display: block;

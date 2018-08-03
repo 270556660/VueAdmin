@@ -47,11 +47,25 @@ module.exports = {
     },
     module: {
         // 多个loader是有顺序要求的，从右往左写，因为转换的时候是从右往左转换的
-        rules: [{
+        rules: [
+            // {
+            //     test: /\.vue$/,
+            //     use: ['vue-loader'],
+            //     include: [resolve('src')], //限制范围，提高打包速度
+            //     exclude: /node_modules/
+            // }, 
+            {
                 test: /\.vue$/,
-                use: ['vue-loader'],
-                include: [resolve('src')], //限制范围，提高打包速度
-                exclude: /node_modules/
+                loader: 'vue-loader',
+                options: {
+                    loaders: {
+                        css: 'vue-style-loader!css-loader',
+                        less: 'vue-style-loader!css-loader!less-loader'
+                    },
+                    postLoaders: {
+                        html: 'babel-loader'
+                    }
+                }
             }, {
                 test: /\.css$/,
                 use: ['css-hot-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],

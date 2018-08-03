@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';
-// import Input from 'iview/src/components/input';
 import axios from './http/index';
 import store from './store/store';
 import router from './router/index';
