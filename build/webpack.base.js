@@ -4,6 +4,8 @@ const chalk = require('chalk');
 
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+
 const HappyPack = require('happypack');
 const os = require('os');
 const happyThreadPool = HappyPack.ThreadPool({
@@ -37,16 +39,24 @@ module.exports = {
         filename: '[name].[hash].js'
     },
     resolve: {
-        extensions: [".js", ".css", ".json"],
-        alias: {} //配置别名可以加快webpack查找模块的速度
+        extensions: [".js", ".css", ".json", ".vue"],
+        alias: {
+            'vue': 'vue/dist/vue.esm.js',
+            '@': path.resolve(__dirname, '../src')
+        } //配置别名可以加快webpack查找模块的速度
     },
     module: {
         // 多个loader是有顺序要求的，从右往左写，因为转换的时候是从右往左转换的
         rules: [{
-                test: /\.css$/,
-                use: ['css-hot-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+                test: /\.vue$/,
+                use: ['vue-loader'],
                 include: [resolve('src')], //限制范围，提高打包速度
                 exclude: /node_modules/
+            }, {
+                test: /\.css$/,
+                use: ['css-hot-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+                // include: [resolve('src')],
+                // exclude: /node_modules/
             },
             {
                 test: /\.less$/,
@@ -123,5 +133,6 @@ module.exports = {
         new ProgressBarPlugin({
             format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)'
         }),
+        new VueLoaderPlugin()
     ]
 }

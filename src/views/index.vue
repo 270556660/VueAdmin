@@ -3,7 +3,7 @@
         <vHeader info="Repositories List"></vHeader>
         <section>
             <div id="wrapper">
-                <mu-raised-button label="View Your Repositories" class="demo-raised-button view-btn" backgroundColor="black" @click="goToLogin"/>
+                <div label="View Your Repositories" class="demo-raised-button view-btn" backgroundColor="black" @click="goToLogin"></div>
             </div>
         </section>
     </div>

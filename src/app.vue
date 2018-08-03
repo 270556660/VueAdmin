@@ -1,19 +1,20 @@
-<template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
-</template>
-
-<script>
-export default {
-  name: 'app'
-}
-</script>
-
 <style>
 #app {
-  font-family: 'Roboto', 'Lato', Helvetica, Arial, sans-serif;
+  font-family: "Roboto", "Lato", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 </style>
+<template>
+    <div id="app">
+        <router-view></router-view>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'app'
+}
+</script>
+
+

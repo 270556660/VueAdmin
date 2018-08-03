@@ -2,7 +2,7 @@
     <div id="header">
         <header>
             <div class="header-bg">
-                <a href="https://github.com" target="_blank"><img src="../assets/timg.jpeg" alt=""></a>    
+                <a href="https://github.com" target="_blank"></a>    
                 <span>{{info}}</span>
             </div>
         </header>
@@ -21,12 +21,12 @@ export default {
 }
 
 </script>
-<style lang="css" scoped>
+<style scoped>
 .header-bg{
     height: 54px;
     width:100%;
     /*background-color: #24292e;*/
-    background-color: black;
+    background-color: red;
     /*position: fixed;*/
 }
 .header-bg img{
