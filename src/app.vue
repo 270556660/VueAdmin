@@ -1,32 +1,19 @@
-<!-- app.vue -->
 <template>
-<div>
-    <div>
-        <h1>姓名：{{name}}</h1>
-        <h2>{{age}}</h2>
-        
-    </div>
-    <!-- 底部导行 -->
-    <div class="weui-tabbar">
-       45454
-    </div>
-    <!-- /底部导行 -->
-</div>
-
+  <div id="app">
+    <router-view></router-view>
+  </div>
 </template>
+
 <script>
 export default {
-    data() {
-        return {
-            name: "guowenfh",
-            age: "21"
-        }
-    },
-    created() {
-        // weui.alert('alert');
-    }
+  name: 'app'
 }
-
 </script>
 
-
+<style>
+#app {
+  font-family: 'Roboto', 'Lato', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+</style>
