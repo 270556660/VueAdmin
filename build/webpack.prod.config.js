@@ -1,7 +1,7 @@
 'use strict'
 
 const path = require('path');
-
+const CopyWebpackPlugin = require('copy-webpack-plugin') // 复制静态资源的插件
 const CleanWebpackPlugin = require('clean-webpack-plugin') // 清空打包目录的插件
 const HtmlWebpackPlugin = require('html-webpack-plugin') // 生成html的插件
 const webpack = require('webpack')
@@ -38,6 +38,13 @@ module.exports = merge(baseConfig, {
                 removeAttributeQuotes:true//压缩 去掉引号
             }
         }),
+        new CopyWebpackPlugin([
+            {
+                from: path.join(__dirname, '..', 'static'),
+                to: path.join(__dirname,  '..', 'dist', 'static'),
+                ignore: ['.*']
+            }
+        ]),
         new CleanWebpackPlugin(['dist'], {
             root: path.join(__dirname, '..'),
             exclude: ['manifest.json', 'vendor.dll.js'],
