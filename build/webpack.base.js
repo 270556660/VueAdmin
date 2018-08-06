@@ -10,22 +10,18 @@ const HappyPack = require('happypack');
 const os = require('os');
 const happyThreadPool = HappyPack.ThreadPool({
     size: os.cpus().length
-})
+});
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin') //CSS文件单独提取出来
+const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //CSS文件单独提取出来
+const devMode = process.env.NODE_ENV !== 'production';
 
 function resolve(dir) {
-    return path.join(__dirname, '..', dir)
+    return path.join(__dirname, '..', dir);
 }
 
 function assetsPath(_path_) {
-    let assetsSubDirectory;
-    if (process.env.NODE_ENV === 'production') {
-        assetsSubDirectory = 'static' //可根据实际情况修改
-    } else {
-        assetsSubDirectory = 'static'
-    }
-    return path.posix.join(assetsSubDirectory, _path_)
+    //可根据实际情况修改
+    return path.posix.join(_path_);
 }
 
 module.exports = {
@@ -47,40 +43,27 @@ module.exports = {
     },
     module: {
         // 多个loader是有顺序要求的，从右往左写，因为转换的时候是从右往左转换的
-        rules: [
-            // {
-            //     test: /\.vue$/,
-            //     use: ['vue-loader'],
-            //     include: [resolve('src')], //限制范围，提高打包速度
-            //     exclude: /node_modules/
-            // }, 
-            {
+        rules: [{
                 test: /\.vue$/,
-                loader: 'vue-loader',
-                options: {
-                    loaders: {
-                        css: 'vue-style-loader!css-loader',
-                        less: 'vue-style-loader!css-loader!less-loader'
-                    },
-                    postLoaders: {
-                        html: 'babel-loader'
-                    }
-                }
-            }, {
+                use: ['vue-loader'],
+                include: [resolve('src')], //限制范围，提高打包速度
+                exclude: /node_modules/
+            },
+            {
                 test: /\.css$/,
-                use: ['css-hot-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+                use: ['css-hot-loader', devMode ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
                 // include: [resolve('src')],
                 // exclude: /node_modules/
             },
             {
                 test: /\.less$/,
-                use: ['css-hot-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'less-loader'],
+                use: ['css-hot-loader',  devMode ? 'style-loader' : MiniCssExtractPlugin.loader, MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'less-loader'],
                 include: [resolve('src')],
                 exclude: /node_modules/
             },
             {
                 test: /\.scss$/,
-                use: ['css-hot-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
+                use: ['css-hot-loader', devMode ? 'style-loader' : MiniCssExtractPlugin.loader,  MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
                 include: [resolve('src')],
                 exclude: /node_modules/
             },

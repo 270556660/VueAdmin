@@ -1,6 +1,7 @@
 'use strict'
 
 const path = require('path');
+
 const CopyWebpackPlugin = require('copy-webpack-plugin') // 复制静态资源的插件
 const CleanWebpackPlugin = require('clean-webpack-plugin') // 清空打包目录的插件
 const HtmlWebpackPlugin = require('html-webpack-plugin') // 生成html的插件
@@ -14,45 +15,45 @@ const WebpackParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = merge(baseConfig, {
-    output:{
+    output: {
         publicPath: './' //这里要放的是静态资源CDN的地址(一般只在生产环境下配置)
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '..', 'src', 'index.html'),
-            filename:'index.html',
-            chunks:['index', 'common'],
+            filename: 'index.html',
+            chunks: ['index', 'common'],
             vendor: './vendor.dll.js',
-            hash:true,//防止缓存
-            minify:{
-                removeAttributeQuotes:true//压缩 去掉引号
+            hash: true, //防止缓存
+            minify: {
+                removeAttributeQuotes: true //压缩 去掉引号
             }
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '..', 'src', 'page.html'),
-            filename:'page.html',
-            chunks:['page', 'common'],
+            filename: 'page.html',
+            chunks: ['page', 'common'],
             vendor: './vendor.dll.js',
-            hash:true,//防止缓存
-            minify:{
-                removeAttributeQuotes:true//压缩 去掉引号
+            hash: true, //防止缓存
+            minify: {
+                removeAttributeQuotes: true //压缩 去掉引号
             }
         }),
-        new CopyWebpackPlugin([
-            {
-                from: path.join(__dirname, '..', 'static'),
-                to: path.join(__dirname,  '..', 'dist', 'static'),
-                ignore: ['.*']
-            }
-        ]),
+        new CopyWebpackPlugin([{
+            from: path.join(__dirname, '..', 'static'),
+            to: path.join(__dirname, '..', 'dist', 'static'),
+            ignore: ['.*']
+        }]),
         new CleanWebpackPlugin(['dist'], {
             root: path.join(__dirname, '..'),
             exclude: ['manifest.json', 'vendor.dll.js'],
             verbose: true,
-            dry:  false
+            dry: false
         }),
         new OptimizeCSSPlugin({
-            cssProcessorOptions: {safe: true}
+            cssProcessorOptions: {
+                safe: true
+            }
         }),
         new PurifyCSSPlugin({
             paths: glob.sync(path.join(__dirname, '../src/*.html'))
@@ -73,6 +74,6 @@ module.exports = merge(baseConfig, {
         }),
         new webpack.DllReferencePlugin({
             manifest: path.resolve(__dirname, '..', 'dist', 'manifest.json')
-        }),
+        })
     ]
 })
