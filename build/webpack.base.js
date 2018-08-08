@@ -27,8 +27,7 @@ function assetsPath(_path_) {
 module.exports = {
     context: path.resolve(__dirname, '../'),
     entry: {
-        index: './src/index.js',
-        page: './src/page.js'
+        index: './src/index.js'
     },
     output: {
         path: resolve('dist'),
@@ -57,13 +56,13 @@ module.exports = {
             },
             {
                 test: /\.less$/,
-                use: ['css-hot-loader',  devMode ? 'style-loader' : MiniCssExtractPlugin.loader, MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'less-loader'],
+                use: ['css-hot-loader',  devMode ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'less-loader'],
                 include: [resolve('src')],
                 exclude: /node_modules/
             },
             {
                 test: /\.scss$/,
-                use: ['css-hot-loader', devMode ? 'style-loader' : MiniCssExtractPlugin.loader,  MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
+                use: ['css-hot-loader', devMode ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
                 include: [resolve('src')],
                 exclude: /node_modules/
             },

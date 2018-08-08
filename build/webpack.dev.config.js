@@ -36,16 +36,6 @@ const devWebpackConfig = merge(baseConfig, {
           removeAttributeQuotes:true//压缩 去掉引号
       }
     }),
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '..', 'src','page.html'),
-      filename:'page.html',
-      chunks:['page', 'common'],
-      vendor: './vendor.dll.js', //与dll配置文件中output.fileName对齐
-      hash:true,//防止缓存
-      minify:{
-          removeAttributeQuotes:true//压缩 去掉引号
-      }
-    }),
     new webpack.DllReferencePlugin({
       manifest: path.resolve(__dirname, '..', 'dist', 'manifest.json')
     }),

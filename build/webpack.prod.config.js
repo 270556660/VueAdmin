@@ -29,16 +29,6 @@ module.exports = merge(baseConfig, {
                 removeAttributeQuotes: true //压缩 去掉引号
             }
         }),
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, '..', 'src', 'page.html'),
-            filename: 'page.html',
-            chunks: ['page', 'common'],
-            vendor: './vendor.dll.js',
-            hash: true, //防止缓存
-            minify: {
-                removeAttributeQuotes: true //压缩 去掉引号
-            }
-        }),
         new CopyWebpackPlugin([{
             from: path.join(__dirname, '..', 'static'),
             to: path.join(__dirname, '..', 'dist', 'static'),

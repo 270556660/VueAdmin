@@ -4,7 +4,7 @@ import 'iview/dist/styles/iview.css';
 import axios from './http/index';
 import store from './store/store';
 import router from './router/index';
-import App from './App.vue';
+import app from './app.vue';
 
 Vue.use(iView);
 
@@ -15,5 +15,5 @@ new Vue({
     axios,
     router,
     store,
-    render: h => h(App)
+    render: h => h(app)
 }).$mount('#app');
