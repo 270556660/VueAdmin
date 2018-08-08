@@ -22,29 +22,5 @@ export default {
 
 </script>
 <style scoped>
-.header-bg{
-    height: 54px;
-    width:100%;
-    /*background-color: #24292e;*/
-    background-color: red;
-    /*position: fixed;*/
-}
-.header-bg img{
-    height: 40px;
-    width: 40px;
-    margin-left: 13.3%;
-    position: relative;
-    top:7px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-.header-bg span{
-    color: white;
-    font-size: 18px;
-    position: relative;
-    bottom:6px;
-    margin-left: 10px;
-    user-select:none;
-    cursor: default;
-}
+
 </style>

@@ -1,18 +1,13 @@
 'use strict'
-
 const path = require('path');
-
-const CopyWebpackPlugin = require('copy-webpack-plugin') // 复制静态资源的插件
-const CleanWebpackPlugin = require('clean-webpack-plugin') // 清空打包目录的插件
-const HtmlWebpackPlugin = require('html-webpack-plugin') // 生成html的插件
-const webpack = require('webpack')
-const baseConfig = require('./webpack.base')
-const merge = require('webpack-merge')
-
-const glob = require('glob')
-const PurifyCSSPlugin = require('purifycss-webpack')
-const WebpackParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
-const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin'); // 复制静态资源的插件
+const CleanWebpackPlugin = require('clean-webpack-plugin'); // 清空打包目录的插件
+const HtmlWebpackPlugin = require('html-webpack-plugin'); // 生成html的插件
+const webpack = require('webpack');
+const baseConfig = require('./webpack.base');
+const merge = require('webpack-merge');
+const WebpackParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = merge(baseConfig, {
     output: {
@@ -44,9 +39,6 @@ module.exports = merge(baseConfig, {
             cssProcessorOptions: {
                 safe: true
             }
-        }),
-        new PurifyCSSPlugin({
-            paths: glob.sync(path.join(__dirname, '../src/*.html'))
         }),
         new WebpackParallelUglifyPlugin({
             uglifyJS: {

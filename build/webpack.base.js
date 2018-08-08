@@ -13,7 +13,6 @@ const happyThreadPool = HappyPack.ThreadPool({
 });
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //CSS文件单独提取出来
-const devMode = process.env.NODE_ENV !== 'production';
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir);
@@ -50,21 +49,9 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ['css-hot-loader', devMode ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+                use: ['css-hot-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
                 // include: [resolve('src')],
                 // exclude: /node_modules/
-            },
-            {
-                test: /\.less$/,
-                use: ['css-hot-loader',  devMode ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'less-loader'],
-                include: [resolve('src')],
-                exclude: /node_modules/
-            },
-            {
-                test: /\.scss$/,
-                use: ['css-hot-loader', devMode ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
-                include: [resolve('src')],
-                exclude: /node_modules/
             },
             {
                 test: /\.jsx?$/,
@@ -74,7 +61,7 @@ module.exports = {
             },
             { //file-loader 解决css等文件中引入图片路径的问题
                 // url-loader 当图片较小的时候会把图片BASE64编码，大于limit参数的时候还是使用file-loader 进行拷贝
-                test: /\.(png|jpg|jpeg|gif|svg)/,
+                test: /\.(png|jpg|jpeg|gif)/,
                 use: {
                     loader: 'url-loader',
                     options: {
@@ -92,7 +79,7 @@ module.exports = {
                 }
             },
             {
-                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
@@ -123,11 +110,12 @@ module.exports = {
             threadPool: happyThreadPool
         }),
         new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "[id].css"
+            filename: "[name].[hash].css",
+            chunkFilename: "[id].[hash].css"
         }),
         new ProgressBarPlugin({
-            format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)'
+            format: 'build [:bar]' + chalk.green.bold(':percent') + '(:elapsed seconds)',
+            clear: false
         }),
         new VueLoaderPlugin()
     ]

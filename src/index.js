@@ -5,6 +5,7 @@ import axios from './http/index';
 import store from './store/store';
 import router from './router/index';
 import app from './app.vue';
+import "./styles/app.css";
 
 Vue.use(iView);
 

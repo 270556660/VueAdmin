@@ -36,24 +36,3 @@ export default {
 }
 
 </script>
-<style lang="css">
-.token-input{
-    display: block !important;
-    margin:auto;
-    margin-top:60px;
-    margin-bottom: 30px !important;
-}
-.line{
-    background-color: black !important;
-}
-.label{
-    color: black !important;
-}
-.btn-wrapper{
-    margin:auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 260px;
-}
-</style>

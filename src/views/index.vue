@@ -2,15 +2,16 @@
     <div id="index">
         <vHeader info="Repositories List"></vHeader>
         <section>
-            <div id="wrapper" style="background:#999;">
+            <div id="wrapper">
+                <div class="classA">wq</div>
                 <div label="View Your Repositories" class="demo-raised-button view-btn"  @click="goToLogin">45</div>
             </div>
         </section>
     </div>
 </template>
 <script>
-import router from '@/router/index'
-import header from '@/components/head'
+import router from '@/router/index';
+import header from '@/components/head';
 export default {
     data() {
         return {
