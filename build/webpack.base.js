@@ -11,7 +11,6 @@ const os = require('os');
 const happyThreadPool = HappyPack.ThreadPool({
     size: os.cpus().length
 });
-
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //CSS文件单独提取出来
 
 function resolve(dir) {
@@ -36,7 +35,7 @@ module.exports = {
         extensions: [".js", ".css", ".json", ".vue"],
         alias: {
             'vue': 'vue/dist/vue.esm.js',
-            '@': path.resolve(__dirname, '../src')
+            '~': path.resolve(__dirname, '../src')
         } //配置别名可以加快webpack查找模块的速度
     },
     module: {
@@ -55,7 +54,7 @@ module.exports = {
             },
             {
                 test: /\.jsx?$/,
-                loader: 'happypack/loader?id=happy-babel-js',
+                loader: 'happypack/loader?id=happy-babel',
                 include: [resolve('src')],
                 exclude: /node_modules/,
             },
@@ -88,6 +87,9 @@ module.exports = {
             }
         ]
     },
+    // performance: {
+    //     hints:  false //运行命令行会报一段 warning,把这个 warning 关闭
+    // },
     optimization: { //webpack4.x的最新优化配置项，用于提取公共代码
 
         splitChunks: {
@@ -105,7 +107,7 @@ module.exports = {
     },
     plugins: [
         new HappyPack({
-            id: 'happy-babel-js',
+            id: 'happy-babel',
             loaders: ['babel-loader?cacheDirectory=true'],
             threadPool: happyThreadPool
         }),

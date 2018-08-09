@@ -10,8 +10,8 @@
     </div>
 </template>
 <script>
-import router from '@/router/index';
-import header from '@/components/head';
+import router from '~/router/index';
+import header from '~/components/head';
 export default {
     data() {
         return {

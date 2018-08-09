@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Index from '@/views/index'
-import Login from '@/views/login'
-import Repository from '@/views/repository'
-import store from '@/store/store'
+import Index from '~/views/index'
+import Login from '~/views/login'
+import Repository from '~/views/repository'
+import store from '~/store/store'
 
 Vue.use(VueRouter)
 

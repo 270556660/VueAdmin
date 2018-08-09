@@ -25,9 +25,9 @@
 
 
 <script>
-import header from '@/components/head'
-import axios from '../http'
-import router from '@/router/index'
+import header from '~/components/head'
+import axios from '../axios'
+import router from '~/router/index'
 export default {
 
     name: 'repository',

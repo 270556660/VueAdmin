@@ -19,6 +19,7 @@ module.exports = merge(baseConfig, {
             filename: 'index.html',
             chunks: ['index', 'common'],
             vendor: './vendor.dll.js',
+            favicon:'static/favicon.ico',
             hash: true, //防止缓存
             minify: {
                 removeAttributeQuotes: true //压缩 去掉引号
@@ -27,7 +28,7 @@ module.exports = merge(baseConfig, {
         new CopyWebpackPlugin([{
             from: path.join(__dirname, '..', 'static'),
             to: path.join(__dirname, '..', 'dist', 'static'),
-            ignore: ['.*']
+            ignore: ['.*','favicon.ico']
         }]),
         new CleanWebpackPlugin(['dist'], {
             root: path.join(__dirname, '..'),

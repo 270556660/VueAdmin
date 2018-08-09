@@ -1,6 +1,6 @@
 import axios from 'axios';
-import store from '@/store/store';
-import router from '@/router/index';
+import store from '~/store/store';
+import router from '~/router/index';
 
 axios.defaults.timeout = 5000;
 axios.defaults.baseURL = 'https://api.github.com';

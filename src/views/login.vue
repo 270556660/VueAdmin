@@ -11,7 +11,7 @@
     </div>
 </template>
 <script>
-import header from '@/components/head'
+import header from '~/components/head'
 
 export default {
     data() {
