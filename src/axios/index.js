@@ -4,6 +4,10 @@ import router from '~/router/index';
 
 axios.defaults.timeout = 5000;
 axios.defaults.baseURL = 'https://api.github.com';
+// axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+//axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';//表单上传file
+
 
 // 添加请求拦截器
 axios.interceptors.request.use(

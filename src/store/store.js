@@ -1,15 +1,15 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import app from './modules/app'; //框架样式
+import user from './modules/user';
 Vue.use(Vuex);
 const store = new Vuex.Store({
-    state: {
-        token:''
-    },
+    state: {},
     mutations: {},
     actions: {},
     modules: {
-        app
+        app,
+        user
     }
 });
 
