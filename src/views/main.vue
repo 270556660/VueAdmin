@@ -39,13 +39,17 @@
   overflow: auto;
   z-index: 1;
 }
+.logo-con {
+  background: #363e4f;
+  margin-bottom: 1px;
+}
 </style>
 <template>
     <Layout>
         <Sider hide-trigger collapsible :collapsed-width="50" v-model="isCollapsed" class="sider" :class="{ collapsed_menu: isCollapsed}">
             <div class="logo-con">
                 <img v-show="!isCollapsed" src="../images/logo.png" />
-                <img v-show="isCollapsed" src="../images/logo-min.jpg" />
+                <img v-show="isCollapsed" src="../images/logo-min.png" />
             </div>
             <!-- 侧边菜单 -->
             <siderMenu></siderMenu>

@@ -10,7 +10,7 @@
                 <Button icon="md-trash">批量删除</Button>
             </Poptip>
             <!-- 增加分类 -->
-            <addClassification></addClassification>
+            <addClassification @on-change="getList();"></addClassification>
             </Col>
         </Row>
         <Table :columns="tacolumns" :data="tadata" :loading="loading" @on-selection-change="taCheck" class="mt10"></Table>
@@ -81,7 +81,6 @@ export default {
                     date: '2018.01.01 10:10:10',
                 }
             ]
-
         }
     },
     methods: {
@@ -93,9 +92,8 @@ export default {
             } else {
                 this.page = page;
             }
-
             this.loading = true;
-            Axios.post("api.php", {
+            this.http.post("api.php", {
                 action: "material",
                 opt: "getMaterials",
                 name: this.name,

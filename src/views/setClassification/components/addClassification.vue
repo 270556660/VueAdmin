@@ -1,40 +1,16 @@
-<style scoped>
-.item {
-  position: relative;
-  height: 22px;
-  line-height: 22px;
-}
-.menu_item i {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transition: font-size 0.2s ease, transform 0.2s ease;
-  vertical-align: middle;
-  font-size: 16px;
-  transform: translateY(-50%);
-}
-
-.menu_item span {
-  width: 100%;
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  text-indent: 20px;
-  transition: width 0.2s ease 0.2s;
-}
-
-.collapsed_menu span {
-  display: none;
-}
-.collapsed_menu i {
-  transform: translate(-12px, -50%);
-  font-size: 26px;
-}
-</style>
 <template>
     <span>
-        <Button @click="addClassification" icon="md-add">创建素材</Button>
+        <Button @click="show_win=true;" icon="md-add">创建素材</Button>
+        <Modal v-model="show_win" title="选择媒体" @on-ok="addAapp()" :loading="loading" ok-text="确定">
+            <Form :label-width="60">
+                <FormItem label="分类名称">
+                    <Input v-model="classify" placeholder="请输入分类名称" />
+                </FormItem>
+                <FormItem label="顺序">
+                    <Input v-model="order" placeholder="请输入顺序" />
+                </FormItem>
+            </Form>
+        </Modal>
     </span>
 </template>
 <script>
@@ -42,11 +18,34 @@ export default {
     name: 'addClassification',
     data() {
         return {
+            show_win: false,
+            loading: false,
+            classify: "",
+            order: ""
         }
     },
     methods: {
-        addClassification() {
-
+        addAapp() {
+            if (this.classify == "") {
+                this.$Message.info("请输入分类名称");
+                return;
+            }
+            if (this.order == "") {
+                this.$Message.info("请输入顺序");
+                return;
+            }
+            this.loading = true;
+            this.http.post("api.php", {
+                action: "material",
+                opt: "deleteMaterials",
+                ids: this.taCheckids
+            }).then(res => {
+                if (res.ret == 1) {
+                    this.loading = false;
+                    this.$Message.info(res.msg);
+                    this.$emit('on-change');
+                }
+            });
         }
     }
 }

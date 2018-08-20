@@ -10,21 +10,24 @@ const routes = [{
         children: [{
                 path: '/',
                 title: '小程序列表',
-                name: 'md-list',
+                name: 'appList',
+                icon: 'md-list',
                 component: () =>
                     import ('~/views/appList/appList.vue')
             },
             {
                 path: 'setClassification',
                 title: '分类设置',
-                name: 'md-apps',
+                name: 'setClassification',
+                icon: 'md-apps',
                 component: () =>
                     import ('~/views/setClassification/setClassification.vue')
             },
             {
                 path: 'addApp',
                 title: '新增小程序',
-                name: 'md-add',
+                name: 'addApp',
+                icon: 'md-add',
                 component: () =>
                     import ('~/views/addApp/addApp.vue')
             }

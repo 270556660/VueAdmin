@@ -32,4 +32,15 @@ util.removeItem = (key) => {
     }
 };
 
+//过滤掉对象参数值为""、null、undefined
+util.dealObjectValue=(obj) =>{
+    var param={};
+    for(var k in obj) {
+        if(obj[k] != ""){
+            param[k]=obj[k]
+        };
+    }
+    return param;
+};
+
 export default util;
