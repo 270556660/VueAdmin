@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import Util from '~/utils/index';
+import util from '~/utils/index';
 
 export default {
     data() {
@@ -94,23 +94,21 @@ export default {
     methods: {
         Login() {
             this.$store.dispatch('setToken', "123");
-            Util.setItem('token', "123");
+            util.setItem('token', "123");
             this.$router.push({
                 name: "index"
             });
-            // this.axios.post('/user', {
+            // this.http.post('/user', {
             //     userName: this.userName,
             //     passWord: this.passWord
             // }).then(function (response) {
             //     // 保存token
             //     this.$store.dispatch('setToken', "123");
-            //     Util.setItem('token', "123");
+            //     util.setItem('token', "123");
             //     this.$router.push({
             //         name: "index"
             //     });
-            // }).catch(function (error) {
-            //     console.log(error);
-            // });
+            // })
         }
     }
 }

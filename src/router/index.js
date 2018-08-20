@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import iView from 'iview';
-import Util from '~/utils/index';
+import util from '~/utils/index';
 import store from '~/store/store';
 
 Vue.use(VueRouter)
@@ -44,7 +44,7 @@ let router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     iView.LoadingBar.start();
-    Util.title(to.meta.title);
+    util.title(to.meta.title);
     // 判断该路由是否需要登录权限
     if (to.matched.some(record => record.meta.requiresAuth)) {
         // 通过vuex state获取当前的token是否存在
@@ -76,7 +76,7 @@ router.afterEach((to) => {
 });
 
 //页面刷新时，通过判断localStorage中token是否存在从而重新dispatch登录操作，否则刷新页面后，vuex状态消失，会重新返回到登录页面
-let token = Util.getItem('token');
+let token = util.getItem('token');
 if (token) {
     store.dispatch('setToken', token);
 }

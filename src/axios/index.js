@@ -2,15 +2,18 @@ import axios from 'axios';
 import store from '~/store/store';
 import router from '~/router/index';
 
-axios.defaults.timeout = 5000;
-axios.defaults.baseURL = 'https://api.github.com';
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-//axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';//表单上传file
 
+var instance = axios.create({
+    baseURL: 'https://api.github.com',
+    timeout: 5000,
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' //'multipart/form-data';//表单上传file
+    }
+});
 
 // 添加请求拦截器
-axios.interceptors.request.use(
+instance.interceptors.request.use(
     (config) => {
         if (store.state.token) {
             //如果存在token的话，则每个http header都加上token
@@ -23,7 +26,7 @@ axios.interceptors.request.use(
     })
 
 // 添加响应拦截器
-axios.interceptors.response.use(
+instance.interceptors.response.use(
     (response) => {
         return response
     },
@@ -44,4 +47,4 @@ axios.interceptors.response.use(
         return Promise.reject(error)
     })
 
-export default axios
+export default instance
