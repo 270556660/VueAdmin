@@ -96,8 +96,9 @@ export default {
             this.$store.dispatch('setToken', "123");
             util.setItem('token', "123");
             this.$router.push({
-                name: "index"
+                name: "appList"
             });
+
             // this.http.post('/user', {
             //     userName: this.userName,
             //     passWord: this.passWord

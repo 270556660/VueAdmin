@@ -36,14 +36,12 @@
     <Menu ref="sideMenu" :active-name="$route.name" theme="dark" width="auto" class="menu_item" @on-select="changeMenu">
 
         <template v-for="item in menuList">
-
             <MenuItem v-if="!item.children" :name="item.name">
             <div class="item">
                 <Icon :type="item.icon"></Icon>
                 <span class="layout-text">{{item.title }}</span>
             </div>
             </MenuItem>
-
         </template>
 
         <!-- <MenuItem name="1-1">
@@ -82,7 +80,6 @@ export default {
     },
     computed: {
         menuList() {
-            console.log(this.$store.state.app.menuList)
             return this.$store.state.app.menuList;
         }
     },
