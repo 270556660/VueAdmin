@@ -3,39 +3,10 @@ import VueRouter from 'vue-router';
 import iView from 'iview';
 import util from '~/utils/index';
 import store from '~/store/store';
-
+import routes from '~/router/routes';
 Vue.use(VueRouter)
 
-const routes = [{
-        path: '/',
-        name: 'index',
-        meta: {
-            title: '首页',
-            requiresAuth: true,
-        },
-        component: () =>
-            import ('~/views/index.vue')
-    },
-    {
-        path: '/login',
-        name: 'login',
-        meta: {
-            title: '登陆',
-        },
-        component: () =>
-            import ('~/views/login.vue')
-    },
-    {
-        path: '/repository',
-        name: 'repository',
-        meta: {
-            title: '历史',
-            requiresAuth: true
-        },
-        component: () =>
-            import ('~/views/repository.vue')
-    }
-]
+
 
 let router = new VueRouter({
     // mode: 'history',   //在创建router对象中，如果不配置mode，就会使用默认的hash模式，该模式下路径格式化为#!开关。

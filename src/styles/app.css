@@ -5,3 +5,24 @@ body,
     height: 100%;
 }
 
+.mt10 {
+    margin-top: 10px;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.edit_link {
+    cursor: pointer;
+    color: #2b7ed1;
+    margin-right: 5px;
+    display: inline-block;
+}
+
+.del_link {
+    cursor: pointer;
+    color: #f30;
+    margin-right: 5px;
+    display: inline-block;
+}

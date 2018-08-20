@@ -33,32 +33,20 @@
 }
 </style>
 <template>
-    <Menu active-name="1-1" theme="dark" width="auto" class="menu_item">
-        <MenuItem name="1-1">
-        <div class="item">
-            <Icon type="md-list"></Icon>
-            <span>程序列表</span>
-        </div>
-        </MenuItem>
-        <MenuItem name="1-2">
-        <div class="item">
-            <Icon type="md-apps"></Icon>
-            <span>分类设置</span>
-        </div>
-        </MenuItem>
-        <MenuItem name="1-3">
-        <div class="item">
-            <Icon type="md-add"></Icon>
-            <span>新增分类</span>
-        </div>
-        </MenuItem>
-    </Menu>
+    <span>
+        <Button @click="addClassification" icon="md-add">创建素材</Button>
+    </span>
 </template>
 <script>
 export default {
-    name: 'siderMenu',
+    name: 'addClassification',
     data() {
         return {
+        }
+    },
+    methods: {
+        addClassification() {
+
         }
     }
 }

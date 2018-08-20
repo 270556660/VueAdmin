@@ -35,6 +35,7 @@
   left: 200px;
   right: 0;
   bottom: 0;
+  padding: 10px;
   overflow: auto;
   z-index: 1;
 }
