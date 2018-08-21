@@ -1,5 +1,14 @@
 import main from '~/views/main.vue';
-const routes = [{
+const constantRouterMap = [{
+        path: '/login',
+        name: 'login',
+        meta: {
+            title: '登陆'
+        },
+        component: () =>
+            import ('~/views/login.vue')
+    },
+    {
         path: '/',
         name: 'index',
         meta: {
@@ -9,7 +18,9 @@ const routes = [{
         component: main,
         children: [{
                 path: '/',
-                title: '小程序列表',
+                meta: {
+                    title: '小程序列表'
+                },
                 name: 'appList',
                 icon: 'md-list',
                 component: () =>
@@ -17,7 +28,9 @@ const routes = [{
             },
             {
                 path: 'setClassification',
-                title: '分类设置',
+                meta: {
+                    title: '分类设置'
+                },
                 name: 'setClassification',
                 icon: 'md-apps',
                 component: () =>
@@ -25,23 +38,21 @@ const routes = [{
             },
             {
                 path: 'addApp',
-                title: '新增小程序',
+                meta: {
+                    title: '新增小程序'
+                },
                 name: 'addApp',
                 icon: 'md-add',
                 component: () =>
                     import ('~/views/addApp/addApp.vue')
             }
         ]
-    },
-    {
-        path: '/login',
-        name: 'login',
-        meta: {
-            title: '登陆',
-        },
+    }, {
+        path: '*',
+        name: '404',
         component: () =>
-            import ('~/views/login.vue')
+            import ('~/components/errorPage/404.vue')
     }
 ]
 
-export default routes
+export default constantRouterMap

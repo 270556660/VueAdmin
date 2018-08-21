@@ -8,10 +8,10 @@
   position: absolute;
   top: 50%;
   left: 0;
-  transition: font-size 0.2s ease, transform 0.2s ease;
   vertical-align: middle;
   font-size: 16px;
   transform: translateY(-50%);
+  transition: all 0.2s;
 }
 
 .menu_item span {
@@ -21,13 +21,13 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   text-indent: 20px;
-  transition: width 0.2s ease 0.2s;
+  transition: all 0.2s;
 }
 
-.collapsed_menu span {
+.side_hide span {
   display: none;
 }
-.collapsed_menu i {
+.side_hide i {
   transform: translate(-12px, -50%);
   font-size: 26px;
 }

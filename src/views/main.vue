@@ -14,9 +14,9 @@
 }
 
 .menu_icon {
-  transition: all 0.3s;
+  transition: all 0.2s;
 }
-.rotate_icon {
+.side_hide .menu_icon {
   transform: rotate(-90deg);
 }
 
@@ -38,18 +38,22 @@
   padding: 10px;
   overflow: auto;
   z-index: 1;
+  transition: all 0.2s;
 }
 .logo-con {
   background: #363e4f;
   margin-bottom: 1px;
 }
+.side_hide .content {
+  left: 50px;
+}
 </style>
 <template>
-    <Layout>
-        <Sider hide-trigger collapsible :collapsed-width="50" v-model="isCollapsed" class="sider" :class="{ collapsed_menu: isCollapsed}">
+    <Layout :class="{ side_hide: isCollapsed}">
+        <Sider hide-trigger collapsible :collapsed-width="50" v-model="isCollapsed" class="sider">
             <div class="logo-con">
-                <img v-show="!isCollapsed" src="../images/logo.png" />
-                <img v-show="isCollapsed" src="../images/logo-min.png" />
+                <img v-show="!isCollapsed" src="../images/logo.png" width="100%" />
+                <img v-show="isCollapsed" src="../images/logo-min.png" width="100%" />
             </div>
             <!-- 侧边菜单 -->
             <siderMenu></siderMenu>
@@ -59,7 +63,7 @@
                 <Row>
                     <Col span="12">
                     <Button @click="isCollapsed=!isCollapsed" type="text">
-                        <Icon type="md-menu" size="24" class="menu_icon" :class="{ rotate_icon: isCollapsed}"></Icon>
+                        <Icon type="md-menu" size="24" class="menu_icon"></Icon>
                     </Button>
                     <!-- 全屏 -->
                     <fullScreen v-model="isFullScreen" @on-change="fullscreenChange"></fullScreen>

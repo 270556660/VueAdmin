@@ -3,18 +3,19 @@ import VueRouter from 'vue-router';
 import iView from 'iview';
 import util from '~/utils/index';
 import store from '~/store/store';
-import routes from '~/router/routes';
+import constantRouterMap from '~/router/routes';
 Vue.use(VueRouter)
 
 
 
 let router = new VueRouter({
     // mode: 'history',   //在创建router对象中，如果不配置mode，就会使用默认的hash模式，该模式下路径格式化为#!开关。
-    routes: routes
+    routes: constantRouterMap
 })
 
 router.beforeEach((to, from, next) => {
     iView.LoadingBar.start();
+    console.log(to)
     util.title(to.meta.title);
     // 判断该路由是否需要登录权限
     if (to.matched.some(record => record.meta.requiresAuth)) {

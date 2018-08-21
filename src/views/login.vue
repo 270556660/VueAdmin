@@ -94,10 +94,17 @@ export default {
     methods: {
         Login() {
             this.$store.dispatch('setToken', "123");
+
             util.setItem('token', "123");
+
             this.$router.push({
                 name: "appList"
             });
+
+            // this.$router
+            // util.setItem('menu', accessItem);
+
+
 
             // this.http.post('/user', {
             //     userName: this.userName,
