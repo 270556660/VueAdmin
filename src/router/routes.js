@@ -1,21 +1,12 @@
-import main from '~/views/main.vue';
-const constantRouterMap = [{
-        path: '/login',
-        name: 'login',
-        meta: {
-            title: '登陆'
-        },
-        component: () =>
-            import ('~/views/login.vue')
-    },
-    {
+const dynamicRouters = [{
         path: '/',
         name: 'index',
         meta: {
             title: '首页',
             requiresAuth: true,
         },
-        component: main,
+        component: () =>
+            import ('~/views/main.vue'),
         children: [{
                 path: '/',
                 meta: {
@@ -47,7 +38,8 @@ const constantRouterMap = [{
                     import ('~/views/addApp/addApp.vue')
             }
         ]
-    }, {
+    },
+    {
         path: '*',
         name: '404',
         component: () =>
@@ -55,4 +47,4 @@ const constantRouterMap = [{
     }
 ]
 
-export default constantRouterMap
+export default dynamicRouters

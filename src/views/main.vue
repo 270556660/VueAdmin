@@ -98,11 +98,16 @@ export default {
             isFullScreen: false, //是否全屏
         }
     },
+    mounted(){
+       
+
+    },
     methods: {
         //退出登录
         quitLogin() {
             //清除信息          
             util.removeItem('token');
+            util.removeItem('menu');
             location.reload();
 
             // this.http.get('api.php', {

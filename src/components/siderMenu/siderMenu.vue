@@ -34,12 +34,11 @@
 </style>
 <template>
     <Menu ref="sideMenu" :active-name="$route.name" theme="dark" width="auto" class="menu_item" @on-select="changeMenu">
-
         <template v-for="item in menuList">
-            <MenuItem v-if="!item.children" :name="item.name">
+            <MenuItem  :name="item.name">
             <div class="item">
                 <Icon :type="item.icon"></Icon>
-                <span class="layout-text">{{item.title }}</span>
+                <span class="layout-text">{{item.meta.title }}</span>
             </div>
             </MenuItem>
         </template>
@@ -80,7 +79,8 @@ export default {
     },
     computed: {
         menuList() {
-            return this.$store.state.app.menuList;
+            console.log(this.$store.state.app.menuList[0].children,1)
+            return this.$store.state.app.menuList[0].children;
         }
     },
 }

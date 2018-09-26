@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import util from '~/utils/index';
+import dynamicRouters from '~/router/routes';
 
 export default {
     data() {
@@ -93,16 +93,22 @@ export default {
     },
     methods: {
         Login() {
-            this.$store.dispatch('setToken', "123");
 
-            util.setItem('token', "123");
+            var nemu = ["index", "404", "appList", "addApp"];
+
+            this.util.filterNemu(dynamicRouters, nemu);
+
+            // 保存vuex
+            this.$store.dispatch('setToken', "123");
+            this.$store.dispatch('setMenuList', dynamicRouters);
+
+            // 保存本地
+            this.util.setItem('token', "123");
+            this.util.setItem('menu', JSON.stringify(nemu));
 
             this.$router.push({
                 name: "appList"
             });
-
-            // this.$router
-            // util.setItem('menu', accessItem);
 
 
 

@@ -6,11 +6,14 @@ import store from './store/store';
 import router from './router/index';
 import app from './app.vue';
 import "./styles/app.css";
+import util from '~/utils/index';
 
 Vue.use(iView);
 
 // 将axios挂载到prototype上，在组件中可以直接使用this.axios访问
 Vue.prototype.http = axios;
+Vue.prototype.util = util;
+
 
 new Vue({
     axios,
